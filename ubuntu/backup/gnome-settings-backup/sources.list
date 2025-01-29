@@ -1,0 +1,32 @@
+/etc/apt/sources.list:deb http://us.archive.ubuntu.com/ubuntu/ jammy main restricted
+/etc/apt/sources.list:deb http://us.archive.ubuntu.com/ubuntu/ jammy-updates main restricted
+/etc/apt/sources.list:deb http://us.archive.ubuntu.com/ubuntu/ jammy universe
+/etc/apt/sources.list:deb http://us.archive.ubuntu.com/ubuntu/ jammy-updates universe
+/etc/apt/sources.list:deb http://us.archive.ubuntu.com/ubuntu/ jammy multiverse
+/etc/apt/sources.list:deb http://us.archive.ubuntu.com/ubuntu/ jammy-updates multiverse
+/etc/apt/sources.list:deb http://us.archive.ubuntu.com/ubuntu/ jammy-backports main restricted universe multiverse
+/etc/apt/sources.list:deb http://security.ubuntu.com/ubuntu jammy-security main restricted
+/etc/apt/sources.list:deb http://security.ubuntu.com/ubuntu jammy-security universe
+/etc/apt/sources.list:deb http://security.ubuntu.com/ubuntu jammy-security multiverse
+/etc/apt/sources.list.d/microsoft-prod.list:deb [arch=amd64] https://packages.microsoft.com/ubuntu/22.04/prod jammy main
+/etc/apt/sources.list.d/obsproject-ubuntu-obs-studio-jammy.list:deb https://ppa.launchpadcontent.net/obsproject/obs-studio/ubuntu/ jammy main
+/etc/apt/sources.list.d/microsoft-edge-dev.list:deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main
+/etc/apt/sources.list.d/cuda-ubuntu2204-12-2-local.list:deb [signed-by=/usr/share/keyrings/cuda-E0F6229F-keyring.gpg] file:///var/cuda-repo-ubuntu2204-12-2-local /
+/etc/apt/sources.list.d/ros2.list:deb [arch=amd64 signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu jammy main
+/etc/apt/sources.list.d/cuda-cross-aarch64-ubuntu2004-11-4-local.list:deb [signed-by=/usr/share/keyrings/cuda-647817BB-keyring.gpg] file:///var/cuda-repo-cross-aarch64-ubuntu2004-11-4-local /
+/etc/apt/sources.list.d/duo-prod.list:deb [arch=amd64] https://pkg.duosecurity.com/Ubuntu jammy main
+/etc/apt/sources.list.d/ros2-latest.list:deb [arch=amd64,arm64] http://repo.ros2.org/ubuntu/main jammy main
+/etc/apt/sources.list.d/vscode.list:deb [arch=amd64,arm64,armhf] https://packages.microsoft.com/repos/code stable main
+/etc/apt/sources.list.d/docker.list:deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu   jammy stable
+/etc/apt/sources.list.d/cuda-cross-aarch64-ubuntu2204-12-2-local.list:deb [signed-by=/usr/share/keyrings/cuda-2A3AAF5F-keyring.gpg] file:///var/cuda-repo-cross-aarch64-ubuntu2204-12-2-local /
+/etc/apt/sources.list.d/cuda-ubuntu2004-11-4-local.list:deb [signed-by=/usr/share/keyrings/cuda-A7CFCDD0-keyring.gpg] file:///var/cuda-repo-ubuntu2004-11-4-local /
+/etc/apt/sources.list.d/ubuntu-esm-infra.list:deb https://esm.ubuntu.com/infra/ubuntu jammy-infra-security main
+/etc/apt/sources.list.d/ubuntu-esm-infra.list:deb https://esm.ubuntu.com/infra/ubuntu jammy-infra-updates main
+/etc/apt/sources.list.d/zerotier.list:deb [signed-by=/usr/share/keyrings/zerotier-debian-package-key.gpg] http://download.zerotier.com/debian/jammy jammy main
+/etc/apt/sources.list.d/ubuntu-esm-apps.list:deb https://esm.ubuntu.com/apps/ubuntu jammy-apps-security main
+/etc/apt/sources.list.d/ubuntu-esm-apps.list:deb https://esm.ubuntu.com/apps/ubuntu jammy-apps-updates main
+/etc/apt/sources.list.d/microsoft-edge.list:deb [arch=amd64] https://packages.microsoft.com/repos/edge/ stable main
+/etc/apt/sources.list.d/google-chrome.list:deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main
+/etc/apt/sources.list.d/regolith.list:deb [arch=amd64 signed-by=/usr/share/keyrings/regolith-archive-keyring.gpg] https://regolith-desktop.org/release-3_2-ubuntu-jammy-amd64 jammy main
+/etc/apt/sources.list.d/duosecurity.list:deb [arch=amd64] https://pkg.duosecurity.com/Ubuntu jammy main
+/etc/apt/sources.list.d/repo.fortinet.com.list:deb [arch=amd64 signed-by=/usr/share/keyrings/repo.fortinet.com.gpg] https://repo.fortinet.com/repo/forticlient/7.2/debian stable non-free

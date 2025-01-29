@@ -64,7 +64,7 @@ backup_extensions() {
     # Save enabled extensions list
     echo "$enabled_extensions" > "$backup_dir/enabled-extensions.list"
     
-    # For each enabled extension, save its UUID and version
+    # For each enabled extension, save its UUID, version, and settings
     for ext in $enabled_extensions; do
         if [ -d "$HOME/.local/share/gnome-shell/extensions/$ext" ]; then
             # Copy the entire extension directory
@@ -74,6 +74,18 @@ backup_extensions() {
             if [ -f "$HOME/.local/share/gnome-shell/extensions/$ext/metadata.json" ]; then
                 cp "$HOME/.local/share/gnome-shell/extensions/$ext/metadata.json" "$backup_dir/extensions/$ext-metadata.json"
             fi
+            
+            # Backup extension settings from dconf
+            # Most extensions store settings in org/gnome/shell/extensions/[extension-uuid]
+            dconf dump "/org/gnome/shell/extensions/$ext/" > "$backup_dir/extensions/$ext-settings.dconf"
+            
+            # Some extensions might use different paths, try to detect and backup those too
+            # Check common alternative paths
+            for path in "/org/gnome/shell/extensions/$ext/" "/org/gnome/$ext/" "/org/gnome/desktop/$ext/"; do
+                if dconf list "$path" &>/dev/null; then
+                    dconf dump "$path" > "$backup_dir/extensions/$ext-settings-$(echo "$path" | tr '/' '-' | sed 's/-$//').dconf"
+                fi
+            done
         fi
     done
 }
@@ -205,9 +217,23 @@ install_extensions() {
             cp -r "$backup_dir/extensions"/* "$HOME/.local/share/gnome-shell/extensions/"
         fi
         
-        # Enable extensions
+        # Enable extensions and restore their settings
         while read -r uuid; do
             gnome-shell-extension-tool -e "$uuid" || true
+            
+            # Restore extension settings
+            if [ -f "$backup_dir/extensions/$uuid-settings.dconf" ]; then
+                dconf load "/org/gnome/shell/extensions/$uuid/" < "$backup_dir/extensions/$uuid-settings.dconf"
+            fi
+            
+            # Restore settings from alternative paths if they exist
+            for settings_file in "$backup_dir/extensions/$uuid-settings-"*.dconf; do
+                if [ -f "$settings_file" ]; then
+                    # Extract path from filename
+                    path=$(echo "$settings_file" | sed 's/.*settings-//' | sed 's/\.dconf$//' | tr '-' '/' | sed 's/^/\//' | sed 's/$/\//')
+                    dconf load "$path" < "$settings_file"
+                fi
+            done
         done < "$backup_dir/enabled-extensions.list"
     fi
 }

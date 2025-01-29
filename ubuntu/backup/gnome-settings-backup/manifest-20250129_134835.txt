@@ -1,0 +1,5 @@
+Backup created on: Wed Jan 29 01:48:35 PM MST 2025
+Ubuntu version: Ubuntu 22.04.5 LTS
+GNOME version: GNOME Shell 42.9
+Hostname: UBU-4G0ZSZ3
+User: psauer
